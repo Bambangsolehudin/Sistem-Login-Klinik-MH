@@ -184,13 +184,16 @@ class User extends CI_Controller
 
 	public function rekam_medis()
 	{
-		$data['title'] = 'Rekam Medis';
+		$data['title'] = 'Data Rekam Medis';
 		$data['user'] = $this->db->get_where('user',['email'=> 
 			$this->session->userdata('email')])->row_array();
 
 		$data['tindakan'] = $this->db->get('data_tindakan')->result_array();
 		$data['medis'] = $this->db->get('rekam_medis')->result_array();
+		$data['sum'] = $this->menu_model->get_sum();
+		$data['count'] = $this->menu_model->get_count();
 		$data['visit'] =  ['ya','tidak'];
+
 		
 		if ($this->input->post('keyword')) {
 			$data['medis'] =  $this->menu_model->searchDataRM();
@@ -298,16 +301,6 @@ class User extends CI_Controller
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public function tambah_RM($id){
 		$data['title'] = 'Rekam Medis';
 		$data['user'] = $this->db->get_where('user',['email'=> 
@@ -381,14 +374,12 @@ class User extends CI_Controller
 		
 		$data['title'] = 'Detail RM';
 		$data['user'] = $this->db->get_where('user',['email'=> 
-			$this->session->userdata('email')])->row_array();
+		$this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->menu_model->getRMById($id);
 		
 		$this->load->view('user/cetakRM',$data);
 		
-		
-		
-		
+				
 
 	}
 
@@ -396,6 +387,26 @@ class User extends CI_Controller
 
 
 
+
+public function cetakDataRM()
+	{
+		
+		
+		$data['title'] = 'Detail RM';
+		$data['user'] = $this->db->get_where('user',['email'=> 
+		$this->session->userdata('email')])->row_array();
+		$data['tindakan'] = $this->db->get('data_tindakan')->result_array();
+		$data['medis'] = $this->db->get('rekam_medis')->result_array();
+		$data['sum'] = $this->menu_model->get_sum();
+		$data['count'] = $this->menu_model->get_count();
+		$data['visit'] =  ['ya','tidak'];
+		
+		
+		$this->load->view('user/cetakDataRM',$data);
+		
+				
+
+	}
 
 
 
@@ -436,6 +447,7 @@ class User extends CI_Controller
 		$data['pasien'] = $this->db->get('data_pasien')->result_array();
 		$data['status'] = ['Menikah','Belum Menikah'];
 		$data['status_bayar'] = ['Lunas','Belum Lunas'];
+		$data['count'] = $this->menu_model->get_countRM();
 		// echo 'selamat datang'. $data['user']['name'];	
 		$this->form_validation->set_rules('id_pasien','ID Pasien','required'); 
 		$this->form_validation->set_rules('nama','Nama','required');

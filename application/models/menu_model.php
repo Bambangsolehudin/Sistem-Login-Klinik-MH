@@ -190,9 +190,26 @@ public function getTindakanById($id)
 
 
 
+public function get_sum()
+{
+	$sql = "SELECT SUM(biaya) as biaya from rekam_medis";
+	$result = $this->db->query($sql);
+	return $result->row()->biaya;
+}
 
+public function get_count()
+{
+	$sql = "SELECT COUNT(biaya) as biaya from rekam_medis";
+	$result = $this->db->query($sql);
+	return $result->row()->biaya;
+}
 
-
+public function get_countRM()
+{
+	$sql = "SELECT COUNT(nama) as nama from data_pasien";
+	$result = $this->db->query($sql);
+	return $result->row()->nama;
+}
 
 
 

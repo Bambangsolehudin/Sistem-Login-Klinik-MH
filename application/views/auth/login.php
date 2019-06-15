@@ -4,7 +4,10 @@
         <div class="row justify-content-center">
 
             <div class="col-lg-5">
-                <p class="text-center text-white text-lg " style="font-family: sans-serif;">SELAMAT DATANG DI APLIKASI REKAM MEDIS KLINIK MEDIKA HUSADA</p >
+                <p class="text-center text-white text-lg "  style="font-family: sans-serif; font-weight: bold; font-size: 22px;">Selamat Datang di Aplikasi Rekam Medis Klinik Medika Husada</p >
+              <!--   <div class="icon-lg">
+                 <i class="fas fa-fw fa-clinic-medical"></i>
+                 </div> -->
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">

@@ -39,7 +39,7 @@
            <tbody>
             <?php $i=1; ?>
             <?php foreach ($medis as $m ) :  ?>
-             
+
               <tr>
                <th scope="row"><?= $i; ?></th>
                <td><?= $m['tgl_periksa'];?></td>
@@ -48,19 +48,29 @@
                <td><?= $m['nama'];?></td>
                <td>
                  <a href="<?=base_url();?>user/detailRM/<?=$m['id']; ?>" class="badge badge-info">detail</a>
-                 <a href="<?=base_url();?>user/editRM/<?=$m['id']; ?>" class="badge badge-success">edit</a> 
-                 <a href="<?=base_url();?>user/deleteRM/<?=$m['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a> 
-                 <a href="<?=base_url();?>user/cetakRM/<?=$m['id']; ?>" class="badge badge-info">cetak</a>	
+                 <!-- edit -->
+                 <a href="<?=base_url();?>user/editRM/<?=$m['id']; ?>" class="badge badge-success"><i class="fas fa-edit"></i></a> 
+                 <!-- delete -->
+                 <a href="<?=base_url();?>user/deleteRM/<?=$m['id']; ?>" onclick="return confirm('yakin?'); " ><i class="fas fa-trash-alt" ></i></a> 
+                 <a href="<?=base_url();?>user/cetakRM/<?=$m['id']; ?>" ><i class="fas fa-print"></i></a>	
                </td>
              </tr>
              
              <?php $i++; ?>
-           <?php endforeach; ?>        
-         </tbody>
-       </table>
-     </div>
-   </div>
- </div>      
+           <?php endforeach; ?> 
+        </tbody>
+      </table> 
+    </div>
+     <div style="font-size: 15px;" >
+      <div class="row">
+        <div class="col-md-12">
+          <td>jumlah data : <span class="badge-info" style="padding: 1px;"><?php echo $count; ?> </span> |</td> 
+          <td>| total biaya : <span class="badge-info" style="padding: 1px;"><?php echo $sum; ?></span></td>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>      
 </div>
 </div>
 

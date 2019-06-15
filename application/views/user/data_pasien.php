@@ -46,8 +46,8 @@
                    <td><?= $m['tanggal_lahir'];?></td>             
                    <td>
                     <a href="<?=base_url();?>user/detailPasien/<?=$m['id']; ?>" class="badge badge-info">detail</a>
-                    <a href="<?=base_url();?>user/editPasien/<?=$m['id']; ?>" class="badge badge-success">edit</a> 
-                    <a href="<?=base_url();?>user/deletePasien/<?=$m['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a>    		
+                    <a href="<?=base_url();?>user/editPasien/<?=$m['id']; ?>" class="badge badge-success"><i class="fas fa-edit"></i></a> 
+                    <a href="<?=base_url();?>user/deletePasien/<?=$m['id']; ?>" onclick="return confirm('yakin?');"><i class="fas fa-trash-alt" ></i></a>    		
                   </td>
                 </tr>
                 <?php $i++; ?>
@@ -56,6 +56,21 @@
           </table>
         </div>
       </div>
+
+
+      <div style="font-size: 15px;" >
+     
+        
+          <td>jumlah data : <span class="badge-info" style="padding: 2px;"><?php echo $count; ?> </span></td> 
+          
+       
+    </div>
+
+
+
+
+
+
     </div>
   </div>
 </div>

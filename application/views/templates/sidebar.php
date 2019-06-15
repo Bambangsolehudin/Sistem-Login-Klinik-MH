@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
          <i class="fas fa-fw fa-clinic-medical"></i>
         </div>
-        <div class="sidebar-brand-text mx-6">Clinic Medika Husada</div>
+        <div class="sidebar-brand-text mx-6">Klinik Medika Husada</div>
       </a>
 
       <!-- Divider -->
