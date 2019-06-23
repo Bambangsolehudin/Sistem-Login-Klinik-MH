@@ -41,7 +41,7 @@
                <?php foreach ($pasien as $m ) :  ?>
                  <tr>
                    <th scope="row"><?= $i; ?></th>   
-                   <td><?= $m['id_pasien'];?></td>
+                   <td><?= $m['id'];?></td>
                    <td><?= $m['nama'];?></td>
                    <td><?= $m['tanggal_lahir'];?></td>             
                    <td>
@@ -61,7 +61,7 @@
       <div style="font-size: 15px;" >
      
         
-          <td>jumlah data : <span class="badge-info" style="padding: 2px;"><?php echo $count; ?> </span></td> 
+          <td>jumlah data : <span class="badge badge-primary"><?php echo $count; ?> </span></td> 
           
        
     </div>

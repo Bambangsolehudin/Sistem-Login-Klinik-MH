@@ -152,6 +152,12 @@ class User extends CI_Controller
 
 
 
+
+
+
+
+
+
 	
 
 
@@ -192,6 +198,7 @@ class User extends CI_Controller
 		$data['medis'] = $this->db->get('rekam_medis')->result_array();
 		$data['sum'] = $this->menu_model->get_sum();
 		$data['count'] = $this->menu_model->get_count();
+		$data['sum1'] = $this->menu_model->get_sum1();
 		$data['visit'] =  ['ya','tidak'];
 
 		
@@ -242,6 +249,7 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('diagnosa','Diagnosa','required');
 		$this->form_validation->set_rules('keterangan','Keterangan','required');
 		$this->form_validation->set_rules('biaya','Biaya','required');
+		$this->form_validation->set_rules('biaya_tambahan','Biaya Tambahan','required');
 		
 		if ($this->form_validation->run() == false) 
 		{
@@ -266,7 +274,8 @@ class User extends CI_Controller
 				'anamnesa'=> $this->input->post('anamnesa'),
 				'diagnosa'=> $this->input->post('diagnosa'),
 				'keterangan'=> $this->input->post('keterangan'),
-				'biaya'=> $this->input->post('biaya')
+				'biaya'=> $this->input->post('biaya'),
+				'biaya_tambahan'=> $this->input->post('biaya_tambahan')
 			];
 			$this->db->where('id',$this->input->post('id'));
 			$this->db->update('rekam_medis',$data);
@@ -331,6 +340,11 @@ class User extends CI_Controller
 			$this->load->view('templates/footer');
 
 		}else{
+			// $biaya = $this->input->post('biaya');
+			// $biaya_tambahan =$this->input->('biaya_tambahan');
+			// $data['total'] = $biaya + $biaya_tambahan;
+
+			
 
 			$data =
 			[
@@ -342,7 +356,9 @@ class User extends CI_Controller
 				'anamnesa'=> $this->input->post('anamnesa'),
 				'diagnosa'=> $this->input->post('diagnosa'),
 				'keterangan'=> $this->input->post('keterangan'),
-				'biaya'=> $this->input->post('biaya')
+				'biaya'=> $this->input->post('biaya'),
+				'biaya_tambahan'=> $this->input->post('biaya_tambahan')
+
 			];
 
 			$this->db->insert('rekam_medis', $data);
@@ -399,9 +415,10 @@ public function cetakDataRM()
 		$data['medis'] = $this->db->get('rekam_medis')->result_array();
 		$data['sum'] = $this->menu_model->get_sum();
 		$data['count'] = $this->menu_model->get_count();
+		$data['sum1'] = $this->menu_model->get_sum1();
 		$data['visit'] =  ['ya','tidak'];
 		
-		
+
 		$this->load->view('user/cetakDataRM',$data);
 		
 				
@@ -409,6 +426,25 @@ public function cetakDataRM()
 	}
 
 
+
+
+public function cetakDP()
+	{
+		
+		
+		$data['title'] = 'Data Pasien';
+		$data['user'] = $this->db->get_where('user',['email'=> 
+		$this->session->userdata('email')])->row_array();
+		$data['pasien'] = $this->db->get('data_pasien')->result_array();
+		
+		$data['count'] = $this->menu_model->get_countDP();
+		
+
+		$this->load->view('user/cetakDP',$data);
+		
+				
+
+	}
 
 
 
@@ -446,17 +482,17 @@ public function cetakDataRM()
 		
 		$data['pasien'] = $this->db->get('data_pasien')->result_array();
 		$data['status'] = ['Menikah','Belum Menikah'];
-		$data['status_bayar'] = ['Lunas','Belum Lunas'];
-		$data['count'] = $this->menu_model->get_countRM();
+		
+		$data['count'] = $this->menu_model->get_countDP();
 		// echo 'selamat datang'. $data['user']['name'];	
-		$this->form_validation->set_rules('id_pasien','ID Pasien','required'); 
+		
 		$this->form_validation->set_rules('nama','Nama','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('alamat','Alamat','required');
 		$this->form_validation->set_rules('telepon','Telepon','required');
 		$this->form_validation->set_rules('status','Status','required');
 		$this->form_validation->set_rules('pekerjaan','Pekerjaan','required');
-		$this->form_validation->set_rules('status_bayar','Status Bayar','required');
+		
 		if ($this->input->post('keyword')) {
 			$data['pasien'] =  $this->menu_model->searchDataPasien();
 		}
@@ -485,16 +521,16 @@ public function cetakDataRM()
 		
 		$data['pasien'] = $this->db->get('data_pasien')->result_array();
 		$data['status'] = ['Menikah','Belum Menikah'];
-		$data['status_bayar'] = ['Lunas','Belum Lunas'];
+		
 		// echo 'selamat datang'. $data['user']['name'];	
-		$this->form_validation->set_rules('id_pasien','ID Pasien','required'); 
+		
 		$this->form_validation->set_rules('nama','Nama','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('alamat','Alamat','required');
 		$this->form_validation->set_rules('telepon','Telepon','required');
 		$this->form_validation->set_rules('status','Status','required');
 		$this->form_validation->set_rules('pekerjaan','Pekerjaan','required');
-		$this->form_validation->set_rules('status_bayar','Status Bayar','required');
+		
 		if ($this->form_validation->run() == false) 
 		{
 			
@@ -508,14 +544,14 @@ public function cetakDataRM()
 
 			$data =
 			[
-				'id_pasien' => $this->input->post('id_pasien'),
+				
 				'nama' => $this->input->post('nama'),
 				'tanggal_lahir'=> $this->input->post('tanggal_lahir'),
 				'alamat'=> $this->input->post('alamat'),
 				'telepon'=> $this->input->post('telepon'),
 				'status'=> $this->input->post('status'),
-				'pekerjaan'=> $this->input->post('pekerjaan'),
-				'status_bayar'=> $this->input->post('status_bayar')
+				'pekerjaan'=> $this->input->post('pekerjaan')
+				
 			];
 
 			$this->db->insert('data_pasien', $data);
@@ -550,7 +586,7 @@ public function cetakDataRM()
 		$data['pasien'] = $this->db->get('data_pasien')->result_array();
 		$data['edit'] = $this->menu_model->getPasienById($id);
 		$data['status'] = ['Menikah','Belum Menikah'];
-		$data['status_bayar'] = ['Lunas','Belum Lunas'];
+		
 		$this->form_validation->set_rules('id_pasien','ID Pasien','required'); 
 		$this->form_validation->set_rules('nama','Nama','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
@@ -574,7 +610,7 @@ public function cetakDataRM()
 
 			$data =
 			[
-				'id_pasien' => $this->input->post('id_pasien'),
+				
 				'nama' => $this->input->post('nama'),
 				'tanggal_lahir'=> $this->input->post('tanggal_lahir'),
 				'alamat'=> $this->input->post('alamat'),
@@ -711,11 +747,15 @@ public function cetakDataRM()
 			$this->load->view('templates/footer');
 
 		}else{
+			$tambah_biaya = 0;
+			$biaya = $this->input->post('biaya');
+			$tambah_biaya = $this->input->post('tambah_biaya');
+			$tot_biaya = $biaya + $tambah_biaya;
 
 			$data =
 			[
 				'nama_tindakan' => $this->input->post('nama_tindakan'),
-				'biaya' => $this->input->post('biaya'),
+				'biaya' => $tot_biaya,
 				
 			];
 

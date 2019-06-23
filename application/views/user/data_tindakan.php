@@ -10,12 +10,12 @@
             Data Is not Found!
           </div>
         <?php endif; ?>
-        <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal"> Add New Data</a>
+        <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal"> Tambah Data Tindakan</a>
         <div class="row mt-3">
           <div class="col">
             <form method="post">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search Data by ID Tindakan" name="keyword">
+                <input type="text" class="form-control" placeholder="Search Data by Nama Tindakan" name="keyword">
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="submit" >search</button>
                 </div>
@@ -41,10 +41,10 @@
                <th scope="row"><?= $i; ?></th>
                
                <td><?= $m['nama_tindakan'];?></td>
-               <td><?= $m['biaya'];?></td>                            
+               <td><?= "Rp". number_format($m['biaya']);?></td>                            
                <td>
-                 <a href="<?=base_url();?>user/edit_tindakan/<?=$m['id']; ?>" class="badge badge-success">edit</a> 
-                 <a href="<?=base_url();?>user/deleteTindakan/<?=$m['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');">delete</a> 
+                 <a href="<?=base_url();?>user/edit_tindakan/<?=$m['id']; ?>" class="badge badge-success"><i class="fas fa-edit"></i></a> 
+                 <a href="<?=base_url();?>user/deleteTindakan/<?=$m['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?');"><i class="fas fa-trash-alt" ></i></a> 
                  
                </td>
              </tr>
@@ -62,7 +62,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newMenuModalLabel">Add New Menu</h5>
+        <h5 class="modal-title" id="newMenuModalLabel">Add New Data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

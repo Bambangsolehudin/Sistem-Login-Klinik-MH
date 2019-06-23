@@ -37,7 +37,7 @@
               <?php foreach ($pasien as $m ) :  ?>
                 <tr>
                   <th scope="row"><?= $i; ?></th>    
-                  <td><?= $m['id_pasien'];?></td>
+                  <td><?= $m['id'];?></td>
                   <td><?= $m['nama'];?></td>
                   <td><?= $m['tanggal_lahir'];?></td>
                   <td>

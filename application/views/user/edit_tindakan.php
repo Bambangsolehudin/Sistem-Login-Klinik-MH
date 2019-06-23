@@ -26,6 +26,11 @@
             <label for='biaya'>biaya</label>
             <input type="text" class="form-control" id="biaya" name="biaya" value="<?=$edit['biaya'];  ?>">
           </div>
+
+          <div class="form-group">
+            <label for='tambah_biaya'>Tambah Biaya</label>
+            <input type="text" class="form-control" id="tambah_biaya" name="tambah_biaya">
+          </div>
           <button type="submit" class="btn btn-primary float-right">update data</button>
 
         </form>   

@@ -17,11 +17,11 @@
       <div class="card-body">
 
         <form action="" method="post">
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="id_pasien"> Id Pasien</label>
-            <input type="text" class="form-control" id="id_pasien" name="id_pasien" >
+            <input type="text" class="form-control" id="id_pasien" name="id_pasien" value="">
             <?= form_error('id_pasien','<small class="text-danger" pl-3>','</small>'); ?>
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama">
@@ -63,17 +63,7 @@
             <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="pekerjaan">
             <?= form_error('pekerjaan','<small class="text-danger" pl-3>','</small>'); ?>
           </div>
-          <div class="form-group">
-            <label for="status_bayar">Status Bayar</label>
-            <select class="form-control" id="status_bayar" name="status_bayar">
-              <option value="">Select Menu</option>
-              <?php foreach ($status_bayar as $v) :?>
-                <option value="<?=$v ?>"><?=$v ?></option>
-
-              <?php endforeach; ?>
-            </select>
-            <?= form_error('status_bayar','<small class="text-danger" pl-3>','</small>'); ?>
-          </div>
+          
           <button type="submit" class="btn btn-primary float-right">Tambah data</button>
 
         </form>   

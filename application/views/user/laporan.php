@@ -5,7 +5,7 @@
     <div class="card" style="width: 18rem;">
       <img src="https://img.lovepik.com/element/40047/4712.png_860.png" class="card-img-top" >
         <div class="card-body">       
-          <a href="<?=base_url();?>user/cetakDP ?>" class="btn btn-primary">Cetak Data Pasien</a>
+          <a href="<?=base_url();?>user/cetakDP" class="btn btn-primary">Cetak Data Pasien</a>
         </div>
       </div>
     </div>

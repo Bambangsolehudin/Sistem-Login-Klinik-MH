@@ -22,11 +22,11 @@
           <form action="" method="post">
             <input type="hidden" name="id" value="<?= $edit['id']; ?>">
             
-            <div class="form-group">
+           <!--  <div class="form-group">
               <label for='id_pasien'>id_pasien</label>
 
               <input type="text" class="form-control" id="id_pasien" name="id_pasien" value="<?=$edit['id_pasien'];  ?>">
-            </div>
+            </div> -->
             <div class="form-group">
               <label for='nama'>nama</label>
               <input type="text" class="form-control" id="nama" name="nama" value="<?=$edit['nama'];  ?>">
@@ -76,21 +76,7 @@
 
 
 
-              <div class="form-group">
-                <label for='status_bayar'>status_bayar</label>
-                <select class="form-control" id="status_bayar" name="status_bayar">
-                  
-                  <?php foreach ($status_bayar as $v) :?>
-                    <?php if($v == $edit['status_bayar']) :?>
-                      <option value="<?=$v ?>" selected><?=$v ?></option>
-                      <?php else: ?>
-                        <option value="<?=$v ?>"><?=$v ?></option> 
-                      <?php endif; ?>
-                      
-                    <?php endforeach; ?>
-                  </select>
-                  
-                </div>
+             
 
                 <button type="submit" class="btn btn-primary float-right">updated</button>
 

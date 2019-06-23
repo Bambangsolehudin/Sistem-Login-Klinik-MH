@@ -145,7 +145,7 @@ class menu_model extends CI_model
 	public function searchDataPasien(){
 		$keyword= $this->input->post('keyword');
 		//query builder
-		$this->db->like('id_pasien' , $keyword);
+		$this->db->like('id' , $keyword);
 		$this->db->or_like('nama' , $keyword);
 		$this->db->or_like('tanggal_lahir' , $keyword);
 		$this->db->or_like('alamat' , $keyword);
@@ -204,11 +204,18 @@ public function get_count()
 	return $result->row()->biaya;
 }
 
-public function get_countRM()
+public function get_countDP()
 {
 	$sql = "SELECT COUNT(nama) as nama from data_pasien";
 	$result = $this->db->query($sql);
 	return $result->row()->nama;
+}
+
+public function get_sum1()
+{
+	$sql = "SELECT SUM(biaya_tambahan) as biaya_tambahan from rekam_medis";
+	$result = $this->db->query($sql);
+	return $result->row()->biaya_tambahan;
 }
 
 

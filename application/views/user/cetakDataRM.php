@@ -1,34 +1,42 @@
 <?php 
 
+
 $mpdf = new \Mpdf\Mpdf();
-$html = 
-'
+$html = '
 <!DOCTYPE html>
 <html>
 <head>
   <title></title>
+  
+
 </head>
 <body>
 
 
-<table class="table table-hover">
-           <thead>
+<h1>Data Rekam Medis</h1>
+<table border="1" cellspacing="0">
+         
              <tr>
-               <th scope="col">#</th>
+               <th>#</th>
+               <th></th>
+               <th>Tanggal Periksa</th>
+               <th>Id RM</th>
+               <th>Id Pasien</th>
+               <th>Nama</th>
+               <th>Visit</th>
+               <th>Anamnesa</th>
+               <th>diagnosa</th>
+               <th>Keterangan</th>
+               <th>Biaya</th>
 
-               <th scope="col">Tanggal Periksa</th>
-               <th scope="col">Id RM</th>
-               <th scope="col">Id Pasien</th>
-               <th scope="col">Nama</th>
-               <th scope="col">Action</th>
-             </tr>
-           </thead>
-           <tbody>
+               
+             </tr> 
+         
 ';
-
+// 
 $i=1;
 foreach ($medis as $detail ) {
-    $html.='<tr>
+        $html.='<tr>
         <td>'.$i++.'<td>
         <td>'.$detail["tgl_periksa"].'</td>
         <td>'.$detail["id_rm"].'</td>
@@ -40,20 +48,28 @@ foreach ($medis as $detail ) {
         <td>'.$detail["keterangan"].'</td>
         <td>'.$detail["biaya"].'</td>
         <tr>';
+
+
 }
 
 
 
 
+$total = $sum + $sum1;
 
 
 
-
-$html.= '</tbody>
+$html.= '
       </table> 
-    </div>
+      <p>jumlah data : <span class="badge-info" style="padding: 1px;">'.  $count .' </span> </p> 
+      <p> total biaya : Rp <span class="badge-info" style="padding: 1px;">'.  number_format($sum ).'</span></p>
+       <p> total Biaya Tambahan : Rp. <span class="badge-info" style="padding: 1px;">'.  number_format($sum1) .'</span></p>
+      <p> total Pemasukan : Rp.<span class="badge-info" style="padding: 1px;">'.  number_format($total) .'</span></p>
+
+
+  
     </body>
-</html>'
+</html>';
 
 
 // Write some HTML code:

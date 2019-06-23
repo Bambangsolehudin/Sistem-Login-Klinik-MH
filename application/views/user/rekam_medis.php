@@ -23,6 +23,19 @@
               </form>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
           <!-- tabel data RM -->
           <table class="table table-hover">
            <thead>
@@ -38,6 +51,7 @@
            </thead>
            <tbody>
             <?php $i=1; ?>
+            
             <?php foreach ($medis as $m ) :  ?>
 
               <tr>
@@ -61,11 +75,16 @@
         </tbody>
       </table> 
     </div>
-     <div style="font-size: 15px;" >
+     <div style="" >
       <div class="row">
         <div class="col-md-12">
-          <td>jumlah data : <span class="badge-info" style="padding: 1px;"><?php echo $count; ?> </span> |</td> 
-          <td>| total biaya : <span class="badge-info" style="padding: 1px;"><?php echo $sum; ?></span></td>
+          <td>jumlah data : <span class="badge badge-primary"><?php echo $count; ?> </span> </td> 
+         <!--  <td>| total biaya : <span class="badge-info" style="padding: 1px;"><?php echo $sum; ?></span></td>
+
+          <td>| total biaya tmbh: <span class="badge-info" style="padding: 1px;"><?php echo $sum1; ?></span></td>
+          <?php $total = $sum+$sum1; ?>
+
+          <td>| total : <span class="badge-info" style="padding: 1px;"><?php echo $total; ?></span></td> -->
         </div>
       </div>
     </div>

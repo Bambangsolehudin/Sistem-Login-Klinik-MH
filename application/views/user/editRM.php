@@ -88,7 +88,10 @@
                   <?php endforeach; ?>
                 </select>
               </div>
-
+               <div class="form-group">
+              <label for='biaya_tambahan'>Biaya Tambahan</label>
+              <input type="text" class="form-control" id="biaya_tambahan" name="biaya_tambahan" value="<?=$edit['biaya_tambahan'];  ?>">
+            </div>
               
 
 

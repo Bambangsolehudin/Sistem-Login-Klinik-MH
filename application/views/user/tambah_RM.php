@@ -16,10 +16,9 @@
                     <form action="" method="post">    
                        <div class="form-group">
                             <label for='tgl_periksa'>tgl_periksa</label>
-                            <input type="text" class="form-control" id="tgl_periksa" name="tgl_periksa">
-                              <script>
-                                    $('#tgl_periksa').datepicker({ format: 'dd mmmm yyyy' });
-                              </script>
+                            <?php date_default_timezone_set('Asia/Jakarta');?>
+                            <input type="text" class="form-control" id="tgl_periksa" name="tgl_periksa" value="<?=date('d-m-Y '); ?>" readonly>
+                            
                        </div>
 
                       <div class="form-group">
@@ -29,7 +28,7 @@
 
                        <div class="form-group">
                             <label for='id_pasien'>id_pasien</label>
-                            <input type="text" class="form-control" id="id_pasien" name="id_pasien" value="<?=$edit['id_pasien'];  ?>" readonly>
+                            <input type="text" class="form-control" id="id_pasien" name="id_pasien" value="<?=$edit['id'];  ?>" readonly>
                        </div>
 
                        <div class="form-group">
@@ -68,16 +67,27 @@
 
 
                                <div class="form-group">
-                                <label for='biaya'>biaya</label>
+                                <label for='biaya'>Biaya</label>
                                 
                                 <select class="form-control" id="biaya" name="biaya">
                                  <option value="">select menu</option>
                                   <?php foreach ($tindakan as $v) :?>  
-                                      <option value="<?=$v['nama_tindakan']; ?> Rp  <?=$v['biaya']; ?>"><?=$v['nama_tindakan']; ?> Rp  <?=$v['biaya']; ?>
+                                      <option value="<?=$v['biaya']; ?>"><?=$v['nama_tindakan'];?>
                                  </option>   
                                   <?php endforeach; ?>
                                 </select>
                               </div>
+
+
+                               <div class="form-group">
+                                <label for='biaya_tambahan'>Biaya Tambahan</label>
+                                <input type="text" class="form-control" id="biaya_tambahan" name="biaya_tambahan">
+                              
+                              </div>
+
+
+
+
 
                               <button type="submit" class="btn btn-primary float-right">Tambah data</button>
 
